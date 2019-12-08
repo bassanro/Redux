@@ -11,8 +11,10 @@ export const saveResult = res => {
 // Asnc function
 export const storeResult = res => {
   // these are actions
-  return dispatch => {
+  return (dispatch, getState) => {
     setTimeout(() => {
+      const oldCounter = getState().ctr.counter;
+      console.log(oldCounter);
       //Asyn action creator.
       dispatch(saveResult(res));
     }, 2000);
