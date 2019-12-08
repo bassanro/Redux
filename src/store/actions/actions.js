@@ -35,11 +35,22 @@ export const subtract = value => {
   };
 };
 
-export const storeResult = resultId => {
-  // these are actions
+// Sync Action creator
+export const saveResult = res => {
   return {
     type: STORE_RESULT,
-    result: resultId
+    result: res
+  };
+};
+
+// Asnc function
+export const storeResult = res => {
+  // these are actions
+  return dispatch => {
+    setTimeout(() => {
+      //Asyn action creator.
+      dispatch(saveResult(res));
+    }, 2000);
   };
 };
 
